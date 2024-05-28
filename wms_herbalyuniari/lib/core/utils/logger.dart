@@ -12,4 +12,4 @@ class Logger {
   }
 }
 
-enum LogMode {debug, live }
+enum LogMode { debug, live }

@@ -9,7 +9,7 @@ const num FIGMA_DESIGN_STATUS_BAR = 0;
 extension ResponsiveExtension on num {
   double get _width => SizeUtils.width;
   double get _height => SizeUtils.height;
-  double get h => ((this * _width) /FIGMA_DESIGN_WIDTH);
+  double get h => ((this * _width) / FIGMA_DESIGN_WIDTH);
   double get v =>
     (this * _height) / (FIGMA_DESIGN_HEIGHT - FIGMA_DESIGN_STATUS_BAR);
   double get adaptSize {
@@ -26,7 +26,7 @@ extension FormatExtension on double {
     return double.parse(this.toStringAsFixed(fractionDigits));
   }
 
-  double isNonZero({num defaultValue = 0.0}){
+  double isNonZero({num defaultValue = 0.0}) {
     return this > 0 ? this : defaultValue.toDouble();
   }
 }
@@ -37,14 +37,14 @@ typedef ResponsiveBuild = Widget Function(
   BuildContext context, Orientation orientation, DeviceType devicetype);
 
 class Sizer extends StatelessWidget {
-  const Sizer({Key? key, required this.builder}); : super(key: key);
+  const Sizer({Key? key, required this.builder}) : super(key: key);
 
   final ResponsiveBuild builder;
 
   @override
-  Widget build(BuildContext context){
-    return LayoutBuilder(builder: (context, constraints){
-      return OrientationBuilder(builder: (context, orientation){
+  Widget build(BuildContext context) {
+    return LayoutBuilder(builder: (context, constraints) {
+      return OrientationBuilder(builder: (context, orientation) {
         SizeUtils.setScreenSize(constraints, orientation);
         return builder(context, orientation, SizeUtils.deviceType);
       });
@@ -61,7 +61,7 @@ class SizeUtils {
 
   static late double height;
 
-  static double width;
+  static late double width;
 
   static void setScreenSize(
     BoxConstraints constraints,
@@ -71,12 +71,12 @@ class SizeUtils {
     orientatiton = currentOrientation;
     if (orientatiton == Orientation.potrait) {
       width = 
-        boxConstraints.maxWidth.isNotZero(defaultValue: FIGMA_DESIGN_WIDTH);
-      height = boxConstraints.maxHeight.isNotZero();
+        boxConstraints.maxWidth.isNonZero(defaultValue: FIGMA_DESIGN_WIDTH);
+      height = boxConstraints.maxHeight.isNonZero();
     } else {
       width = 
-        boxConstraints.maxHeight.isNotZero(defaulValue: FIGMA_DESIGN_WIDTH);
-      height = boxConstraints.maxWidth.isNotZero();
+        boxConstraints.maxHeight.isNonZero(defaulValue: FIGMA_DESIGN_WIDTH);
+      height = boxConstraints.maxWidth.isNonZero();
     }
     deviceType = DeviceType.mobile;
   }
