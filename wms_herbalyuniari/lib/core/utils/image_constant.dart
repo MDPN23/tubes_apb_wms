@@ -1,6 +1,8 @@
 class ImageConstant {
   static String imagePath = 'assets/images';
 
+  static String imgThumbsUpPrimary = '$imagePath/img_thumbs_up_primary.svg';
+
   static String imgClock = '$imagePath/img_clock.svg';
 
   static String imgSettings = '$imagePath/img_settings.svg';
@@ -9,7 +11,7 @@ class ImageConstant {
 
   static String imgBrightness = '$imagePath/img_brightness.svg';
 
-  static String imgUser = '$imagePath/img_User.svg';
+  static String imgUser = '$imagePath/img_user.svg';
 
   static String imgThumbsUp = '$imagePath/img_thumbs_up.svg';
 
@@ -30,8 +32,6 @@ class ImageConstant {
 
   static String imgB81Png = '$imagePath/img_b8_1_png.png';
 
-  static String imgThumbsUpPrimary = '$imagePath/img_thumbs_up_primary.svg';
-
   static String imgB811Png = '$imagePath/img_b8_11_png.png';
 
   static String imgB810Png = '$imagePath/img_b8_10_png.png';
@@ -45,15 +45,15 @@ class ImageConstant {
 
   static String imgCheckmark = '$imagePath/img_checkmark.svg';
 
-  static String imgGroup70 = '$imagePath/img_group_70.svg';
-
-  static String imgLinkedin = '$imagePath/img_linkedin.svg';
-
-  static String imgContrast = '$imagePath/img_contrast.svg';
+  static String imgGroup72 = '$imagePath/img_group_72.svg';
 
   static String imgGrid = '$imagePath/img_grid.svg';
 
   static String imglock = '$imagePath/img_lock.svg';
+
+  static String imgLinkedin = '$imagePath/img_linkedin.svg';
+
+  static String imgContrast = '$imagePath/img_contrast.svg';
 
   static String imgPlusGreen800 = '$imagePath/img_plus_green_800.svg';
 
@@ -80,6 +80,5 @@ class ImageConstant {
     '$imagePath/img_clock_onprimarycontainer.svg';
   
   static String imgNotFound = 'assets/images/image_not_found.png';
-
 
 }

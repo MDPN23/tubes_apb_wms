@@ -2,19 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:wms_herbalyuniari/main.dart';
 
-abstract class NetworkInfo{
+abstract class NetworkInfoI{
   Future<bool> isConnected();
+
   Future<ConnectivityResult> get connectivityResult;
-  Future<ConnectivityResult> get onConnectivityChange;
+
+  Future<ConnectivityResult> get onConnectivityChanged;
 }
 
-class NetworkInfo implements NetworkInfo {
+class NetworkInfo implements NetworkInfoI {
   Connectivity connectivity;
 
   static final NetworkInfo _networkInfo = NetworkInfo._internal(Connectivity());
 
   factory NetworkInfo() {
-    return _networkInfol;
+    return _networkInfo;
   }
 
   NetworkInfo._internal(this.connectivity) {
@@ -32,16 +34,16 @@ class NetworkInfo implements NetworkInfo {
   }
 
   @override
-  Future<connectivityResult> get connectivityResult async {
+  Future<ConnectivityResult> get connectivityResult async {
     return connectivity.checkConnectivity();
   }
 
   @override
-  Stream<connectivityReslt> get onConnectivityChange =>
-      connectivity.onConnectivityChange;
+  Stream<ConnectivityResult> get onConnectivityChanged =>
+      connectivity.onConnectivityChanged;
 }
 
-abstract class Failure{}
+abstract class Failure {}
 
 class ServerFailure extends Failure{}
 class CacheFailure extends Failure{}
@@ -53,17 +55,17 @@ class NetworkException extends Exception{}
 Class NoInternetException implements Exception{
   late String _message;
 
-  NoInternetException([String message = "No Internet"]){
-    if(globalMessengerKey.currentSatate != null){
-      globalMessengerKey.currentSatate!
-        .showSnackBar(SnackBar(content: Text(Message)));
-  }
-  this._message = message;
+  NoInternetException([String message = "NoInternetException Occured"]){
+    if(globalMessengerKey.currentState != null){
+      globalMessengerKey.currentState!
+        .showSnackBar(SnackBar(content: Text(message)));
+    }
+    this._message = message;
   }
 
   @override
   String toString() {
     return _message;
   }
-
+  
 }
